@@ -60,9 +60,21 @@ class Network():
         """
         #initializes dictionary with 0 as default value 
         traversal_funnels = defaultdict(int)
+        nodes_in_cycles = set([node for cycle in self.cycles for node in cycle])
 
         for node in net:
-            pass
+            link = net.get(node, False)
+            #confirm starting node isn't in a cycle
+            if node in nodes_in_cycles: link = False
+            traversed = []
+
+            while link not in traversed and link:
+                traversal_funnels[link] += 1
+                traversed.append(link)
+                #inside cycle?
+                if link in nodes_in_cycles:
+                    break
+                link = net.get(link, False)
         return traversal_funnels
 
         

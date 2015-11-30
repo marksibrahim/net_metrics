@@ -32,4 +32,6 @@ def test_traversal_funnels():
     traversal_funnels = sample_net.traversal_funnels
     assert traversal_funnels['A'] == 0
     assert traversal_funnels['B'] == 0
-    #assert traversal_funnels['C'] == 4
+    assert traversal_funnels['C'] == 4
+    assert traversal_funnels['E'] == 2
+    assert traversal_funnels['G'] == 0
